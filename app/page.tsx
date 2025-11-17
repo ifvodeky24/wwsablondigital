@@ -1,65 +1,121 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Header from "../components/Header";
+import Features from "../components/Features";
+import Gallery from "../components/Gallery";
+import Products from "../components/Products";
+import Pricing from "../components/Pricing";
+import Testimonials from "../components/Testimonials";
+import OfflineStoresClientWrapper from "../components/OfflineStoresClientWrapper";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
+import Footer from "../components/Footer";
+import { Box, Container, HStack, Text } from "@chakra-ui/react";
+import { FaShippingFast } from "react-icons/fa";
+
+export default function HomePage() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "WWSablon",
+    url: "https://wwsablon.example",
+    telephone: "+6281234567890",
+    description:
+      "Jasa sablon kaos custom berkualitas tinggi. Pesan via WhatsApp.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Jakarta",
+      addressCountry: "ID",
+    },
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      <Header />
+
+      <Box as="main">
+        {/* Hero */}
+        <Box bg="brand.900" color="white" py={{ base: 20, md: 28 }}>
+          <Container maxW="container.lg" textAlign="center">
+            <Box
+              as="h1"
+              fontSize={{ base: "3xl", md: "5xl" }}
+              fontWeight="bold"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              WWSablon
+            </Box>
+            <Box mt={4} maxW="720px" mx="auto" color="gray.100">
+              Jasa sablon kaos custom berkualitas — ideal untuk brand,
+              komunitas, & event. Pesan mudah via WhatsApp.
+            </Box>
+          </Container>
+        </Box>
+
+        <Features />
+        <Gallery />
+        <Products />
+        <Pricing />
+        <Testimonials />
+        <OfflineStoresClientWrapper />
+
+        {/* Kontak / CTA Section */}
+        <Box id="kontak" py={12} bg="white" textAlign="center">
+          <Container maxW="container.lg">
+            <Box fontSize="xl" fontWeight="bold" mb={2}>
+              Siap memesan?
+            </Box>
+            <Box color="gray.600" mb={4}>
+              Hubungi kami sekarang untuk konsultasi & mockup gratis.
+            </Box>
+
+            {/* Informasi Paket */}
+            <HStack
+              justify="center"
+              spacing={2}
+              color="gray.700"
+              mb={6}
+              fontSize="md"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              <FaShippingFast size={20} />
+              <Text>
+                Kami juga melayani pengiriman menggunakan paket cepat.
+              </Text>
+            </HStack>
+
+            {/* Tombol WhatsApp */}
+            <Box
+              as="a"
+              href="https://wa.me/6281234567890?text=Halo%20WWSablon%2C%20saya%20ingin%20memesan"
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              <Box
+                display="inline-block"
+                bg="brand.500"
+                color="white"
+                px={6}
+                py={3}
+                borderRadius="md"
+                fontWeight="bold"
+                _hover={{ bg: "brand.600" }}
+                transition="0.2s"
+              >
+                Pesan via WhatsApp
+              </Box>
+            </Box>
+          </Container>
+        </Box>
+
+        <Footer />
+      </Box>
+
+      <FloatingWhatsApp />
+
+      {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+    </>
   );
 }
