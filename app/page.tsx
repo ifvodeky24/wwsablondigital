@@ -6,7 +6,7 @@ import Gallery from "../components/Gallery";
 import Products from "../components/Products";
 import Pricing from "../components/Pricing";
 import Testimonials from "../components/Testimonials";
-import OfflineStoresClientWrapper from "../components/OfflineStoresClientWrapper";
+import OfflineStores from "../components/OfflineStores"; // langsung import
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import Footer from "../components/Footer";
 import { Box, Container, HStack, Text } from "@chakra-ui/react";
@@ -55,7 +55,9 @@ export default function HomePage() {
         <Products />
         <Pricing />
         <Testimonials />
-        <OfflineStoresClientWrapper />
+
+        {/* Render OfflineStores langsung */}
+        <OfflineStores />
 
         {/* Kontak / CTA Section */}
         <Box id="kontak" py={12} bg="white" textAlign="center">
@@ -67,7 +69,6 @@ export default function HomePage() {
               Hubungi kami sekarang untuk konsultasi & mockup gratis.
             </Box>
 
-            {/* Informasi Paket */}
             <HStack
               justify="center"
               spacing={2}
@@ -81,7 +82,6 @@ export default function HomePage() {
               </Text>
             </HStack>
 
-            {/* Tombol WhatsApp */}
             <Box
               as="a"
               href="https://wa.me/6281234567890?text=Halo%20WWSablon%2C%20saya%20ingin%20memesan"
