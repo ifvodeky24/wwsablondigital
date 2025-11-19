@@ -43,7 +43,7 @@ export default function Features() {
     >
       <Container maxW="container.lg" textAlign="center" mb={10}>
         <Heading fontWeight="bold" mb={2}>
-          Kenapa Pilih WWSablon?
+          Kenapa Pilih WW Sablon Digital?
         </Heading>
         <Text color="gray.600" fontSize="lg">
           Solusi sablon kaos untuk brand, event, dan kebutuhan promosi.

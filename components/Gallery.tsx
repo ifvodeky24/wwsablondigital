@@ -21,6 +21,9 @@ const images = [
   "/images/gallery/design-4.jpg",
   "/images/gallery/design-5.jpg",
   "/images/gallery/design-6.jpg",
+  "/images/gallery/design-7.jpg",
+  "/images/gallery/design-8.jpg",
+  "/images/gallery/design-9.jpg",
 ];
 
 export default function Gallery() {
@@ -59,7 +62,7 @@ export default function Gallery() {
                 src={src}
                 alt={`Sablon ${i + 1}`}
                 width="100%"
-                height="260px"
+                height="550px"
                 objectFit="cover"
               />
             </Box>

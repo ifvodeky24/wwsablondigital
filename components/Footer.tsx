@@ -9,11 +9,11 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
-  const whatsappNumber = "6281234567890";
+  const whatsappNumber = "6281293177984";
   const instagramUrl = "https://instagram.com/wwsablondigital";
 
-  const mapLat = -0.46667;
-  const mapLng = 102.53333;
+  const mapLat = -0.37287;
+  const mapLng = 102.56005;
 
   return (
     <Box bg="gray.900" color="white" mt={20} pt={10}>
@@ -27,7 +27,7 @@ const Footer = () => {
         {/* Brand Section */}
         <VStack align="flex-start" spacing={3}>
           <Text fontSize="2xl" fontWeight="bold" color="brand.400">
-            WWSablon
+            WW Sablon Digital
           </Text>
           <Text fontSize="sm" maxW="260px" opacity={0.85}>
             Jasa sablon kaos profesional dan custom — kualitas premium harga
@@ -100,7 +100,7 @@ const Footer = () => {
 
       <Box borderTop="1px solid" borderColor="gray.700" py={4}>
         <Text textAlign="center" fontSize="sm" opacity={0.7}>
-          © {new Date().getFullYear()} WWSablon. All Rights Reserved.
+          © {new Date().getFullYear()} WWSablonDigital. All Rights Reserved.
         </Text>
       </Box>
     </Box>

@@ -5,11 +5,12 @@ import { Box, Container, Image, Text, HStack } from "@chakra-ui/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const storeGallery = [
-  "/images/store/gallery-1.jpg",
-  "/images/store/gallery-2.jpg",
-  "/images/store/gallery-3.jpg",
-  "/images/store/gallery-4.jpg",
-  "/images/store/gallery-5.jpg",
+  "/images/store/store-1.jpg",
+  "/images/store/store-2.jpg",
+  "/images/store/store-1.jpg",
+  "/images/store/store-2.jpg",
+  "/images/store/store-1.jpg",
+  "/images/store/store-2.jpg",
 ];
 
 export default function OfflineStores() {
@@ -18,7 +19,7 @@ export default function OfflineStores() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const IMAGE_WIDTH = 300;
-  const IMAGE_HEIGHT = 250;
+  const IMAGE_HEIGHT = 500;
   const IMAGE_SPACING = 32;
 
   // Set container width di client
@@ -71,7 +72,7 @@ export default function OfflineStores() {
         <HStack mt={3} justify="center" spacing={2}>
           <FaMapMarkerAlt color="#234FBF" />
           <Text fontWeight="semibold" fontSize="lg">
-            Toko WWSablon Rengat
+            WW Sablon Rengat
           </Text>
         </HStack>
       </Container>

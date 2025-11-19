@@ -4,7 +4,7 @@ import { IconButton, Box } from "@chakra-ui/react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function FloatingWhatsApp() {
-  const wa = "6281234567890";
+  const wa = "6281293177984";
   return (
     <Box position="fixed" bottom="25px" right="25px" zIndex={60}>
       <IconButton

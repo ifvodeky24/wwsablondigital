@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
+import Image from "next/image";
 import {
   Box,
   HStack,
@@ -64,8 +65,11 @@ export default function Header() {
   const handleSmoothScroll = (id: string) => {
     const section = document.getElementById(id);
     if (!section) return;
-    section.scrollIntoView({ behavior: "smooth" });
+
     onClose();
+    setTimeout(() => {
+      section.scrollIntoView({ behavior: "smooth" });
+    }, 150);
   };
 
   const bgHeader = useColorModeValue("white", "gray.800");
@@ -91,9 +95,18 @@ export default function Header() {
         >
           <NextLink
             href="/"
-            style={{ fontWeight: 700, color: "#234FBF", fontSize: 18 }}
+            style={{ display: "flex", alignItems: "center", gap: "8px" }}
           >
-            WWSablon
+            <Image
+              src="/images/logo/logo.png"
+              alt="WWSablon Logo"
+              width={28}
+              height={28}
+              style={{ objectFit: "contain" }}
+            />
+            <span style={{ fontWeight: 700, color: "#234FBF", fontSize: 18 }}>
+              WWSablon
+            </span>
           </NextLink>
 
           {/* Desktop Menu */}
@@ -128,6 +141,7 @@ export default function Header() {
           />
         </Container>
 
+        {/* Mobile Menu */}
         <Collapse in={isOpen} animateOpacity>
           <Box pb={4} display={{ md: "none" }} bg={bgHeader}>
             <VStack spacing={2}>
@@ -162,7 +176,7 @@ export default function Header() {
           aria-label="Scroll to top"
           icon={<ArrowUpIcon />}
           position="fixed"
-          bottom="80px" // agar tidak bentrok dengan FloatingWhatsApp
+          bottom="80px"
           right="25px"
           size="lg"
           shadow="lg"

@@ -49,7 +49,7 @@ export default function Testimonials() {
     >
       <Container maxW="container.lg" textAlign="center" mb={12}>
         <Heading fontWeight="bold" mb={2}>
-          Apa Kata Mereka
+          WW Kata Mereka
         </Heading>
         <Text color="gray.600" fontSize={{ base: "md", md: "lg" }}>
           Testimoni pelanggan yang sudah memakai jasa WWSablon.

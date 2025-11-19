@@ -6,11 +6,12 @@ import Gallery from "../components/Gallery";
 import Products from "../components/Products";
 import Pricing from "../components/Pricing";
 import Testimonials from "../components/Testimonials";
-import OfflineStores from "../components/OfflineStores"; // langsung import
+import OfflineStores from "../components/OfflineStores";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import Footer from "../components/Footer";
 import { Box, Container, HStack, Text } from "@chakra-ui/react";
 import { FaShippingFast } from "react-icons/fa";
+import Image from "next/image";
 
 export default function HomePage() {
   const schema = {
@@ -18,7 +19,7 @@ export default function HomePage() {
     "@type": "LocalBusiness",
     name: "WWSablon",
     url: "https://wwsablon.example",
-    telephone: "+6281234567890",
+    telephone: "+6281293177984",
     description:
       "Jasa sablon kaos custom berkualitas tinggi. Pesan via WhatsApp.",
     address: {
@@ -28,21 +29,61 @@ export default function HomePage() {
     },
   };
 
+  const wa = "6281293177984";
+
   return (
     <>
       <Header />
 
       <Box as="main">
         {/* Hero */}
-        <Box bg="brand.900" color="white" py={{ base: 20, md: 28 }}>
-          <Container maxW="container.lg" textAlign="center">
+        {/* Hero */}
+        <Box
+          bgImage="url('/images/store/store-1.jpg')"
+          bgSize="cover"
+          bgPosition="center"
+          bgRepeat="no-repeat"
+          color="white"
+          py={{ base: 20, md: 28 }}
+          position="relative"
+          overflow="hidden" // ⬅ agar gambar tidak melewati area Box
+        >
+          {/* Overlay hitam transparan */}
+          <Box
+            position="absolute"
+            inset={0}
+            bg="blackAlpha.700" // ⬅ transparan
+            zIndex={0}
+          />
+
+          <Container
+            maxW="container.lg"
+            textAlign="center"
+            position="relative"
+            zIndex={1}
+          >
+            {/* Logo */}
+            <Box mb={4}>
+              <Image
+                src="/images/logo/logo.png"
+                alt="WWSablon Logo"
+                width={70}
+                height={70}
+                style={{
+                  margin: "0 auto",
+                  objectFit: "contain",
+                }}
+              />
+            </Box>
+
             <Box
               as="h1"
               fontSize={{ base: "3xl", md: "5xl" }}
               fontWeight="bold"
             >
-              WWSablon
+              WW Sablon Digital Rengat
             </Box>
+
             <Box mt={4} maxW="720px" mx="auto" color="gray.100">
               Jasa sablon kaos custom berkualitas — ideal untuk brand,
               komunitas, & event. Pesan mudah via WhatsApp.
@@ -55,18 +96,17 @@ export default function HomePage() {
         <Products />
         <Pricing />
         <Testimonials />
-
-        {/* Render OfflineStores langsung */}
         <OfflineStores />
 
         {/* Kontak / CTA Section */}
         <Box id="kontak" py={12} bg="white" textAlign="center">
           <Container maxW="container.lg">
             <Box fontSize="xl" fontWeight="bold" mb={2}>
-              Siap memesan?
+              Siap Cetak Desainmu Sekarang?
             </Box>
+
             <Box color="gray.600" mb={4}>
-              Hubungi kami sekarang untuk konsultasi & mockup gratis.
+              Konsultasi & mockup GRATIS — langsung chat kami aja!
             </Box>
 
             <HStack
@@ -78,13 +118,14 @@ export default function HomePage() {
             >
               <FaShippingFast size={20} />
               <Text>
-                Kami juga melayani pengiriman menggunakan paket cepat.
+                Pengiriman cepat ke seluruh Indonesia 🚚 — biaya tergantung
+                tujuan & ekspedisi pilihan kamu.
               </Text>
             </HStack>
 
             <Box
               as="a"
-              href="https://wa.me/6281234567890?text=Halo%20WWSablon%2C%20saya%20ingin%20memesan"
+              href={`https://wa.me/${wa}?text=Halo%20WWSablonDigital%2C%20saya%20ingin%20memesan`}
               target="_blank"
               rel="noreferrer"
               style={{ textDecoration: "none" }}

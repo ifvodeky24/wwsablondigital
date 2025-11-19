@@ -28,12 +28,9 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-// -----------------------------
-// TypeScript Types
-// -----------------------------
 type Variant = {
-  stock: { [size: string]: number }; // stock per ukuran
-  images: string[]; // gambar per varian
+  stock: { [size: string]: number };
+  images: string[];
 };
 
 type Variants = {
@@ -45,7 +42,7 @@ type Prices = {
 };
 
 type Measurements = {
-  [size: string]: { [key: string]: string }; // misal "Lingkar Dada": "50cm"
+  [size: string]: { [key: string]: string };
 };
 
 interface Product {
@@ -57,9 +54,6 @@ interface Product {
   measurements: Measurements;
 }
 
-// -----------------------------
-// Data Produk
-// -----------------------------
 const products: Product[] = [
   {
     name: "Kaos Cotton Combed 30s",
@@ -68,14 +62,11 @@ const products: Product[] = [
     variants: {
       Hitam: {
         stock: { S: 10, M: 8, L: 0, XL: 5, XXL: 2 },
-        images: ["/images/products/kaos-1.jpg", "/images/products/kaos-1.jpg"],
+        images: ["/images/products/kaos-1.jpg"],
       },
       Putih: {
         stock: { S: 3, M: 6, L: 4, XL: 3, XXL: 1 },
-        images: [
-          "/images/products/kaos-1.jpg",
-          "/images/products/kaos-1-white-2.jpg",
-        ],
+        images: ["/images/products/kaos-1.jpg"],
       },
     },
     prices: { S: 60000, M: 65000, L: 70000, XL: 75000, XXL: 80000 },
@@ -87,40 +78,8 @@ const products: Product[] = [
       XXL: { "Lingkar Dada": "62 cm", "Panjang Baju": "75 cm" },
     },
   },
-  {
-    name: "Kaos Raglan Premium",
-    img: "/images/products/raglan-1.jpg",
-    desc: "Nyaman dipakai harian, desain sporty dan kekinian.",
-    variants: {
-      Hitam: {
-        stock: { S: 5, M: 4, L: 6, XL: 3, XXL: 2 },
-        images: [
-          "/images/products/kaos-1.jpg",
-          "/images/products/raglan-black-2.jpg",
-        ],
-      },
-      Putih: {
-        stock: { S: 4, M: 3, L: 5, XL: 2, XXL: 1 },
-        images: [
-          "/images/products/raglan-white-1.jpg",
-          "/images/products/raglan-white-2.jpg",
-        ],
-      },
-    },
-    prices: { S: 70000, M: 75000, L: 80000, XL: 85000, XXL: 90000 },
-    measurements: {
-      S: { "Lingkar Dada": "52 cm", "Panjang Baju": "66 cm" },
-      M: { "Lingkar Dada": "55 cm", "Panjang Baju": "69 cm" },
-      L: { "Lingkar Dada": "58 cm", "Panjang Baju": "71 cm" },
-      XL: { "Lingkar Dada": "61 cm", "Panjang Baju": "74 cm" },
-      XXL: { "Lingkar Dada": "64 cm", "Panjang Baju": "76 cm" },
-    },
-  },
 ];
 
-// -----------------------------
-// Component
-// -----------------------------
 export default function Products() {
   const {
     isOpen: isImgOpen,
@@ -135,7 +94,6 @@ export default function Products() {
 
   const [selectedImg, setSelectedImg] = useState("");
   const [detailIndex, setDetailIndex] = useState<number | null>(null);
-  const [selectedDetailColor, setSelectedDetailColor] = useState<string>("");
 
   const [selectedOptions, setSelectedOptions] = useState(
     products.map((p) => {
@@ -164,7 +122,6 @@ export default function Products() {
 
   const openDetailModal = (i: number) => {
     setDetailIndex(i);
-    setSelectedDetailColor(Object.keys(products[i].variants)[0]);
     onDetailOpen();
   };
 
@@ -222,7 +179,6 @@ export default function Products() {
                     {p.desc}
                   </Text>
 
-                  {/* Warna */}
                   <HStack w="full">
                     <Text fontSize="sm">Warna:</Text>
                     <Select
@@ -236,7 +192,6 @@ export default function Products() {
                     </Select>
                   </HStack>
 
-                  {/* Ukuran */}
                   <HStack w="full">
                     <Text fontSize="sm">Ukuran:</Text>
                     <Select
@@ -250,12 +205,10 @@ export default function Products() {
                     </Select>
                   </HStack>
 
-                  {/* Stock */}
                   <Tag colorScheme={isSoldOut ? "red" : "green"} size="sm">
                     {isSoldOut ? "Habis" : `Stock: ${stock}`}
                   </Tag>
 
-                  {/* Harga + Buttons */}
                   <HStack justify="space-between" w="full" pt={1}>
                     <Text fontWeight="bold">Rp {price}</Text>
                     <Button
@@ -263,7 +216,7 @@ export default function Products() {
                       colorScheme="green"
                       isDisabled={isSoldOut}
                       as="a"
-                      href={`https://wa.me/6281234567890?text=${encodeURIComponent(
+                      href={`https://wa.me/6281293177984?text=${encodeURIComponent(
                         waMsg
                       )}`}
                       target="_blank"
@@ -285,7 +238,7 @@ export default function Products() {
         </SimpleGrid>
       </Container>
 
-      {/* Modal Image Zoom */}
+      {/* Preview Gambar */}
       <Modal isOpen={isImgOpen} onClose={onImgClose} size="2xl" isCentered>
         <ModalOverlay />
         <ModalContent bg="transparent" boxShadow="none">
@@ -296,7 +249,7 @@ export default function Products() {
         </ModalContent>
       </Modal>
 
-      {/* Modal Detail Produk */}
+      {/* Detail Produk (TANPA PILIHAN WARNA) */}
       {detailIndex !== null && (
         <Modal
           isOpen={isDetailOpen}
@@ -307,25 +260,10 @@ export default function Products() {
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>
-              {products[detailIndex].name} - Detail Ukuran
+              {products[detailIndex].name} - Tabel Ukuran
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              {/* Pilih Warna */}
-              <HStack mb={4}>
-                <Text>Warna:</Text>
-                <Select
-                  size="sm"
-                  value={selectedDetailColor}
-                  onChange={(e) => setSelectedDetailColor(e.target.value)}
-                >
-                  {Object.keys(products[detailIndex].variants).map((c) => (
-                    <option key={c}>{c}</option>
-                  ))}
-                </Select>
-              </HStack>
-
-              {/* Table Ukuran */}
               <Table variant="simple" size="sm">
                 <Thead>
                   <Tr>
